@@ -1,0 +1,6 @@
+<h1>Home page</h1>
+<%= form_with url: "/boards", method: :get do |form| %>
+  <%= form.label :postcode, "Enter a postcode:" %>
+  <%= form.text_field :postcode, placeholder: "Eg. NW5 1TL" %>
+  <%= form.submit "Find the nearest buses" %>
+<% end %>
