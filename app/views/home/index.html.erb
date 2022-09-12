@@ -1,6 +1,10 @@
-<h1>Home page</h1>
-<%= form_with url: "/boards", method: :get do |form| %>
-  <%= form.label :postcode, "Enter a postcode:" %>
-  <%= form.text_field :postcode, placeholder: "Eg. NW5 1TL" %>
-  <%= form.submit "Find the nearest buses" %>
-<% end %>
+<div class="container" style="margin-top: 50px">
+  <h1 class="title">Bus Board</h1>
+  <h2 class="subtitle is-4"> Postcode search </h2>
+
+  <%= form_with url: "/boards", method: :get do |form| %>
+    <%= form.label :postcode, "Enter a postcode:", class: "label" %>
+    <%= form.text_field :postcode, placeholder: "Eg. NW5 1TL", class: "input" %>
+    <%= form.submit "Submit", class: "button is-link", style:"margin-top: 10px"%>
+  <% end %>
+</div>

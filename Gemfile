@@ -45,6 +45,12 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 # gem "sassc-rails"
 
+# Use Httparty to make Http requests
+gem 'httparty'
+
+# Use bulma for styling
+gem "bulma-rails", "~> 0.8.0"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

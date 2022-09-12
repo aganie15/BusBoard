@@ -1,2 +1,47 @@
-<h1>Boards#display</h1>
-<p>Find me in app/views/boards/display.html.erb</p>
+<div class="container" style="margin-top: 50px">
+  <h1 class="title"> Search results </h1>
+  <% if @invalid_postcode %>
+    <h2 class="subtitle is-4">The postcode you entered (<%= @pretty_postcode %>) is not a valid postcode, please press
+      the 'Go back' button below to try again. </h2>
+  <% else %>
+    <% if @arrivals_hash.empty? %>
+      <h2 class="subtitle is-4">There are no bus stops near the postcode <%= @pretty_postcode %>, please try again using
+        a different postcode. </h2>
+    <% else %>
+      <h2 class="subtitle is-4">The bus arrivals at the stops closest to the postcode <%= @pretty_postcode %> are
+        displayed below: </h2>
+    <% end %>
+  <% end %>
+  <br>
+</div>
+
+<script type="text/javascript">
+    setTimeout("location.reload();",30000);
+</script>
+
+<div class="container">
+  <% for bus_stop in @arrivals_hash %>
+    <h3 class="title is-5" style="margin-bottom: 0"><%= @stop_name_hash[bus_stop[0]] %></h3>
+    <table class="table is-hoverable is-striped is-bordered">
+      <tr>
+        <th>Line</th>
+        <th>Destination</th>
+        <th>Minutes to arrival</th>
+      </tr>
+      <br>
+      <% for bus in @arrivals_hash[bus_stop[0]] %>
+        <tr>
+          <td><%= bus.get_line_num %></td>
+          <td><%= bus.get_destination %></td>
+          <td><%= bus.get_mins_to_arrival %></td>
+        </tr>
+      <% end %>
+    </table>
+    <br>
+  <% end %>
+</div>
+
+<div class="container">
+  <button class="button is-medium is-primary" style="margin-top: 50px" onclick="window.location.href='/home';">Go back
+  </button>
+</div>
